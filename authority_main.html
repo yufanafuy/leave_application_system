@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leave Management System</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.bundle.js"></script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class = "row">
+			<div class = "col-lg-4">
+				<?php
+					print "Staff ID: " . $_COOKIE["staff_id"];
+				?>
+				<br>
+				<button type='button' class="btn btn-danger" onclick="location.href = 'logout.php';">Logout</button>
+			</div>
+			<div class = "col=lg-8">
+				<h1> Leave Management System </h1>
+				<br><br>
+				<form action="authority_view_leave.php" method="post">
+					<input type="submit" name="view_type" value="View PENDING Leaves" class="btn btn-info" style="width:100%; height:100px;">
+					<br><br>
+					<input type="submit" name="view_type" value="View ALL Leaves" class="btn btn-info" style="width:100%; height:100px;">
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

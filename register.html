@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leave Management System</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.bundle.js"></script>
+	<script>
+		function validateForm()
+		{
+			registration = document.registration;
+			// Check ID
+			var check_id = registration.id.value;
+			if (check_id.length < 1)
+				{
+				  alert("Staff ID must not be empty!");
+				  return false
+				}
+			//Check Email
+			aliaspos=registration.email.value.indexOf("@");
+			dotpos=registration.email.value.lastIndexOf(".");
+			if (aliaspos == -1 || dotpos == -1)
+				{
+				  alert("Please enter a valid email address!");
+				  return false;
+				}
+			//Check password
+			var check_password = registration.password.value;
+			var lowerCaseLetters = /[a-z]/g;
+			var upperCaseLetters = /[A-Z]/g;
+			var numbers = /[0-9]/g;
+			if ((check_password.length < 9))
+				{
+				  alert("Password must be at least 8 characters long!");
+				  return false;
+				}
+			else if (!(check_password.match(lowerCaseLetters)))
+				{
+				  alert("Password must contain at least one lowercase letters!");
+				  return false;
+				}
+			else if (!(check_password.match(upperCaseLetters)))
+				{
+				  alert("Password must contain at least one uppercase letters!");
+				  return false;
+				}
+			else if (!(check_password.match(numbers)))
+				{
+				  alert("Password must contain at least number!");
+				  return false;
+				}
+			//Check second password
+			if(registration.password.value != registration.password2.value)
+				{
+				  alert("Passwords do not match! Please type the same password twice.");
+				  return false;
+				}
+		}
+	</script>
+	<script>
+		$(document).ready(function(){
+		  $('[data-toggle="tooltip"]').tooltip();   
+		});
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<h1 align="center"> Staff Registration </h1>
+		<form align="center" name="registration" action="register.php" method="post" onsubmit="return validateForm()">
+			<div class="form-group">
+				<label for="id"> Staff ID: </label>
+				<input type="text" class="form-control" name="id" id="id" style="width:25%;margin:auto;">
+			</div>
+			<div class="form-group">
+				<label for="email">Email: </label>
+				<input type="email" class="form-control" name="email" id="email" style="width:25%;margin:auto;">
+			</div>
+			<div class="form-group">
+				<label for="email">Password: </label>
+				<input type="password" class="form-control" name="password" id="password" style="width:25%;margin:auto;" data-toggle="tooltip" title="1 Capital Letter, 1 Small Letter, 1 Number, minimum 8 characters.">
+			</div>
+			<div class="form-group">
+				<label for="email">Confirm Password: </label>
+				<input type="password" class="form-control" name="password2" id="password2" style="width:25%;margin:auto;" data-toggle="tooltip" title="Enter your password again.">
+			</div>
+			<br>
+			<input type="submit" name="Register" value="Register" class="btn btn-success" style="width:25%;margin:auto;">Register</button>
+			<br><br>
+			<button type="button" name="Cancel" class="btn btn-danger" style="width:25%;margin:auto;" onclick="location.href = 'index.html'">Cancel</button>
+		</form>			
+	</div>
+</body>
+</html>

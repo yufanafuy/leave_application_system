@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Leave Management System</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/jquery-3.4.1.min.js"></script>
+	<script src="js/bootstrap.bundle.js"></script>
+	<script>
+		function calDuration()
+		{
+		  var startDate_raw = document.getElementById("startDate").value;
+		  var endDate_raw = document.getElementById("endDate").value;
+		  var startDate_split = startDate_raw.split("-");
+		  var endDate_split = endDate_raw.split("-");
+		  var startDate = startDate_split[0] + "/" + startDate_split[1] + "/" + startDate_split[2];
+		  var endDate = endDate_split[0] + "/" + endDate_split[1] + "/" + endDate_split[2];
+		  var startDate = Date.parse(startDate);
+		  var endDate = Date.parse(endDate);
+		  var timeDiff = endDate - startDate;
+		  var daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+		  document.getElementById("duration").value = daysDiff + 1;
+		}
+	</script>
+</head>
+
+<body>
+	<div class="container-fluid">
+		<div class = "row">
+		<div class = "col-lg-2"></div>
+		<div class = "col-lg-8">
+			<h1 align="center"> Leave Application </h1>
+			<br>
+		<form align="center" name="registration" action="apply.php" method="post" onsubmit="return validateForm()">
+			<div class="form-group">
+				<label for="startDate"> Start Date (dd/mm/yyyy) </label>
+				<input type="date" class="form-control" name="startDate" id="startDate" style="width:25%;margin:auto;">
+			</div>
+			<div class="form-group">
+				<label for="endDate"> End Date (dd/mm/yyyy) </label>
+				<input type="date" class="form-control" name="endDate" id="endDate" style="width:25%;margin:auto;" onchange="calDuration();">
+			</div>
+			<div class="form-group">
+				<label for="reason"> Reason: </label>
+				<textarea rows="5" cols="18" class="form-control" name="reason" id="reason" style="width:25%;margin:auto;"></textarea>
+			</div>
+			<div class="form-group">
+				<label for="leave_type"> Leave Type: </label>
+				<select name="leave_type" style="width:16%;margin:auto;">
+					<option value="Paid Leave">Paid Leave</option>
+					<option value="Unpaid Leave">Unpaid Leave</option>
+					<option value="Medical Leave">Medical Leave</option>
+				</select>
+				<input type="hidden" name="duration" id="duration">
+			</div>
+			<br>
+			<input type="submit" name="Apply" value="Apply" class="btn btn-success" style="width:25%;margin:auto;"></button>
+			<br><br>
+			<button type="button" name="Cancel" class="btn btn-danger" style="width:25%;margin:auto;" onclick="location.href = 'user_main.html'">Cancel</button>
+		</form>	
+		</div>
+		<div class = "col-lg-2"></div>
+	</div>
+</body>
+</html>

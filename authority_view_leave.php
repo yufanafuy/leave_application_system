@@ -55,7 +55,7 @@ echo "
 					}
 				else if($_POST['view_type'] == "View ALL Leaves" || $_POST['view_type'] == "All")
 					{
-						$sql = "SELECT * FROM leave_application WHERE status='Pending' ORDER BY dateOfApplication DESC";
+						$sql = "SELECT * FROM leave_application ORDER BY dateOfApplication DESC";
 					}
 				else
 					{

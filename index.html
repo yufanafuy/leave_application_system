@@ -7,19 +7,6 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<script src="js/jquery-3.4.1.min.js"></script>
 	<script src="js/bootstrap.bundle.js"></script>
-	<script>
-		//ID must not be blank
-		function validateForm()
-			{
-				login = document.login;
-				var check_id = login.id.value;
-				if (check_id.length < 1)
-					{
-						alert("Staff ID must not be empty!");
-						return false
-					}
-			}
-	</script>
 </head>
 
 <body>
@@ -31,11 +18,11 @@
 			<form align="center" name="login" action="login.php" method="post" onsubmit="return validateForm()">
 				<div class="form-group">
 					<label for="id">Staff ID:</label>
-					<input type="text" class="form-control" name="id" id="id" style="width:25%;margin:auto;">
+					<input type="text" class="form-control" name="id" id="id" style="width:25%;margin:auto;" required>
 				</div>
 				<div class="form-group">
 					<label for="password">Password:</label>
-					<input type="password" class="form-control" name="password" id="password" style="width:25%;margin:auto;">
+					<input type="password" class="form-control" name="password" id="password" style="width:25%;margin:auto;" required>
 				</div>
 				<br>
 				<button type="submit" class="btn btn-success" style="width:25%;margin:auto;">Login</button>
